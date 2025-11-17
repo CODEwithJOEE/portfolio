@@ -1,4 +1,3 @@
-// src/Section/Projects.jsx
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MetricCard from "../components/MetricCard";
