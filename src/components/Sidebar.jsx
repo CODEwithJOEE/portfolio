@@ -1,0 +1,84 @@
+// Sidebar.jsx
+import { Mail, Github, Linkedin, Facebook } from "lucide-react";
+import { profile } from "../data/profile";
+import useTypewriter from "../hooks/useTypewriter";
+import useAge from "../hooks/useAge";
+import { TECH_COLORS, TECH_CURSOR } from "../data/techStyles";
+import ActionPill from "./ActionPill";
+import Avatar from "./Avatar";
+
+export default function Sidebar({ onSelectContact }) {
+  const typed = useTypewriter(profile.techRotation, {
+    typeSpeed: 90,
+    deleteSpeed: 50,
+    holdTime: 1000,
+    gapTime: 250,
+  });
+  const age = useAge(profile.birthDateISO);
+
+  return (
+    <div className="space-y-4">
+      <div className="aspect-square flex items-center justify-center">
+        <Avatar
+          src={profile.photo}
+          alt={`Portrait of ${profile.name}`}
+          size="full"
+          ring
+          className="scale-105"
+        />
+      </div>
+
+      <h2 className="text-2xl md:text-3xl font-bold">
+        {profile.headlineGreeting}{" "}
+        <span className="text-blue-500">{profile.name}</span> 👋
+      </h2>
+
+      <p className="text-sm md:text-base opacity-90 leading-relaxed">
+        {profile.summary}
+      </p>
+
+      <p className="text-base md:text-lg">
+        {profile.specialtiesLabel}{" "}
+        <span
+          className={`font-semibold transition-colors duration-300 dark:drop-shadow-[0_0_4px_rgba(255,255,255,0.35)] ${
+            TECH_COLORS[typed] || "text-sky-500 dark:text-sky-300"
+          }`}
+        >
+          {typed}
+        </span>
+        <span
+          className={`ml-0.5 inline-block w-[1ch] border-r-2 animate-pulse ${
+            TECH_CURSOR[typed] || "border-sky-500 dark:border-sky-300"
+          }`}
+          aria-hidden
+        />
+      </p>
+
+      {/* contact & socials */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <ActionPill as="button" onClick={onSelectContact} Icon={Mail}>
+          {profile.ctas.contact}
+        </ActionPill>
+
+        <ActionPill href={profile.links.github} Icon={Github}>
+          {profile.ctas.github}
+        </ActionPill>
+
+        <ActionPill href={profile.links.linkedin} Icon={Linkedin}>
+          {profile.ctas.linkedin}
+        </ActionPill>
+
+        <ActionPill href={profile.links.facebook} Icon={Facebook}>
+          {profile.ctas.facebook}
+        </ActionPill>
+      </div>
+
+      <div className="space-y-1">
+        <p className="text-sm opacity-75">
+          {age} years old · Born: October 27, 2001 · {profile.statusLine}
+        </p>
+        <p className="text-sm opacity-75">{profile.address}</p>
+      </div>
+    </div>
+  );
+}
