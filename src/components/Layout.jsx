@@ -17,7 +17,7 @@ export default function Layout({ left, right, footer }) {
       </main>
 
       {footer && (
-        <footer className="mx-auto max-w-6xl px-4 pb-10 opacity-70 text-xs">
+        <footer className="mx-auto max-w-6xl px-4 pb-10 text-xs opacity-70 text-slate-600 dark:text-slate-400">
           {footer} © {new Date().getFullYear()} Joe Portfolio. All rights
           reserved.
         </footer>
@@ -26,24 +26,20 @@ export default function Layout({ left, right, footer }) {
   );
 }
 
-export function Card({ children, className = "" }) {
+function Card({ children, className = "" }) {
   return (
-    <div
+    <section
       className={[
         "rounded-2xl",
-        // visible border in both modes
-        "border border-slate-200 dark:border-slate-700",
-        // ⬅️ white in light mode, dark panel in dark mode
-        "bg-white dark:bg-slate-900",
-        // subtle shadow
-        "shadow-[0_18px_45px_rgba(15,23,42,0.08)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.75)]",
-        "backdrop-blur-sm",
+        "border border-gray-400 dark:border-white/10",
+
+        "bg-white dark:bg-white/5",
+        "shadow-sm dark:shadow-none",
         "p-5 md:p-8",
-        "overflow-hidden",
         className,
       ].join(" ")}
     >
       {children}
-    </div>
+    </section>
   );
 }

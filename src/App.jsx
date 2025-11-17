@@ -40,10 +40,8 @@ export default function App() {
     <div
       className={
         dark
-          ? // DARK MODE: deep navy background, light text
-            "min-h-screen bg-[#020617] text-slate-100 antialiased transition-colors duration-300"
-          : // LIGHT MODE: soft gray/blue background, dark text
-            "min-h-screen bg-[#f4f7fb] text-slate-900 antialiased transition-colors duration-300"
+          ? "min-h-screen bg-slate-900 text-slate-100"
+          : "min-h-screen bg-slate-50 text-slate-900"
       }
     >
       <Header
@@ -53,7 +51,6 @@ export default function App() {
         dark={dark}
         onToggleTheme={toggle}
       />
-
       <Layout
         left={<Sidebar onSelectContact={() => setActive("contact")} />}
         right={
