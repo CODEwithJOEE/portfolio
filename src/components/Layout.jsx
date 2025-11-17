@@ -1,3 +1,4 @@
+import { CARD } from "../styles/uiStyles";
 export default function Layout({ left, right, footer }) {
   return (
     <div>
@@ -28,17 +29,7 @@ export default function Layout({ left, right, footer }) {
 
 function Card({ children, className = "" }) {
   return (
-    <section
-      className={[
-        "rounded-2xl",
-        "border border-gray-400 dark:border-white/10",
-
-        "bg-white dark:bg-white/5",
-        "shadow-sm dark:shadow-none",
-        "p-5 md:p-8",
-        className,
-      ].join(" ")}
-    >
+    <section className={[CARD, "p-5 md:p-8", className].join(" ")}>
       {children}
     </section>
   );

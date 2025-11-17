@@ -1,6 +1,8 @@
+// src/App.jsx
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import useTheme from "./hooks/useTheme";
+// ⛔ remove this line:
+// import useTheme from "./hooks/useTheme";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout";
@@ -12,6 +14,9 @@ import Skills from "./Section/Skills";
 import Education from "./Section/Education";
 import Contact from "./Section/Contact";
 import Certificates from "./Section/Certificates";
+
+// ✅ new import
+import { APP_SHELL } from "./styles/uiStyles";
 
 const PAGES = [
   { id: "about", label: "About", component: <About /> },
@@ -25,7 +30,8 @@ const PAGES = [
 
 export default function App() {
   const [active, setActive] = useState("about");
-  const { dark, toggle } = useTheme(true);
+  // ⛔ remove theme state:
+  // const { dark, toggle } = useTheme(true);
 
   const RightPanel =
     active === "about" ? (
@@ -37,19 +43,15 @@ export default function App() {
     );
 
   return (
-    <div
-      className={
-        dark
-          ? "min-h-screen bg-slate-900 text-slate-100"
-          : "min-h-screen bg-slate-50 text-slate-900"
-      }
-    >
+    // ✅ always use dark shell from uiStyles
+    <div className={APP_SHELL}>
       <Header
         pages={PAGES.map(({ id, label }) => ({ id, label }))}
         active={active}
         onSelect={setActive}
-        dark={dark}
-        onToggleTheme={toggle}
+        // ⛔ remove theme props:
+        // dark={dark}
+        // onToggleTheme={toggle}
       />
       <Layout
         left={<Sidebar onSelectContact={() => setActive("contact")} />}

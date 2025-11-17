@@ -6,6 +6,14 @@ import { projects } from "../data/projects";
 import { STATUS_STYLES } from "../data/projectStatusStyles";
 import { TECH_STYLES } from "../data/projectTechStyles";
 
+import {
+  CARD,
+  CHIP,
+  BTN_PRIMARY,
+  BTN_PILL,
+  BTN_PILL_ACTIVE,
+} from "../styles/uiStyles";
+
 export default function Projects() {
   const [page, setPage] = useState(1);
   const pageSize = 2;
@@ -104,15 +112,7 @@ export default function Projects() {
 
 function ProjectCard({ title, status, img, desc, techs, live }) {
   return (
-    <article
-      className="
-        rounded-2xl p-3
-        border border-gray-200 dark:border-white/10
-        bg-white dark:bg-white/5
-        shadow-sm dark:shadow-none
-        flex flex-col
-      "
-    >
+    <article className={`${CARD} p-3 flex flex-col`}>
       {/* Image + status */}
       <div className="relative">
         <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white/5">
@@ -147,7 +147,7 @@ function ProjectCard({ title, status, img, desc, techs, live }) {
           {techs.map((t) => (
             <span
               key={t}
-              className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs border ${
+              className={`${CHIP} ${
                 TECH_STYLES[t] ||
                 "bg-slate-500/15 text-slate-300 border-slate-400/20"
               }`}
@@ -164,12 +164,7 @@ function ProjectCard({ title, status, img, desc, techs, live }) {
             href={live}
             target="_blank"
             rel="noreferrer"
-            className="
-              inline-flex items-center justify-center w-full rounded-xl
-              bg-sky-600 hover:bg-sky-500 text-white
-              px-4 py-2 text-sm font-medium transition
-              shadow-sm
-            "
+            className={BTN_PRIMARY}
           >
             View Live
           </a>

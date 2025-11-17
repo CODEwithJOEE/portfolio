@@ -14,8 +14,9 @@ export default function Contact() {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // no-op
+    } catch (err) {
+      // Clipboard might not be available (HTTP, older browsers, etc.)
+      console.error("Failed to copy email:", err);
     }
   };
 
@@ -47,12 +48,12 @@ export default function Contact() {
             focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2
             dark:focus:ring-offset-slate-900
           "
-          aria-live="polite"
         >
           <MdContentCopy size={18} className="opacity-80" />
           {copied ? "Email copied!" : "Copy Email"}
         </button>
 
+        {/* SR-only status for screen readers */}
         <span aria-live="polite" className="sr-only">
           {copied ? "Email copied to clipboard" : ""}
         </span>

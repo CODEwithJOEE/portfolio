@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useInView from "../hooks/useInView";
+import { CARD } from "../styles/uiStyles";
 
 export default function MetricCard({ kpi, label }) {
   const { ref, inView } = useInView({ threshold: 0.3 });
@@ -13,7 +14,6 @@ export default function MetricCard({ kpi, label }) {
     let loopId;
     const duration = 2000;
     const stepTime = 20;
-
     const run = () => {
       let current = 0;
       const totalSteps = Math.max(1, Math.floor(duration / stepTime));
@@ -29,21 +29,15 @@ export default function MetricCard({ kpi, label }) {
         setCount(Math.floor(current));
       }, stepTime);
     };
-
     run();
     loopId = setInterval(run, 8000);
-
     return () => {
       clearInterval(loopId);
       clearInterval(timerId);
     };
   }, [inView, target]);
-
   return (
-    <div
-      ref={ref}
-      className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm dark:shadow-none px-5 py-4 text-center"
-    >
+    <div ref={ref} className={`${CARD} px-5 py-4 text-center`}>
       <div className="text-2xl font-extrabold">
         {count}
         {suffix}

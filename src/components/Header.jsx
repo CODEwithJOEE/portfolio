@@ -1,23 +1,20 @@
 import { useEffect, useMemo, useRef, useState, useId } from "react";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { HEADER_BAR } from "../styles/uiStyles";
 
-/**
- * Header component
- *
- * Organized and accessible version with inline comments for clarity.
- */
 export default function Header({
-  brand = "JOE Portfolio", // Brand name displayed on header
-  pages = [], // Array of navigation pages [{ id, label }]
-  active, // Currently active page ID
-  onSelect, // Function to call when user selects a page
-  dark, // Boolean for dark/light theme
-  onToggleTheme, // Function to toggle theme
+  brand = "JOE Portfolio",
+  pages = [],
+  active,
+  onSelect,
+  // ⛔ remove dark / onToggleTheme:
+  // dark,
+  // onToggleTheme,
 }) {
-  const [open, setOpen] = useState(false); // Mobile menu open state
-  const mdUp = useMediaQuery("(min-width: 768px)"); // Track if viewport >= md breakpoint
-  const panelRef = useRef(null); // Ref for detecting clicks outside mobile menu
-  const navId = useId(); // Unique ID for aria-controls linking
+  const [open, setOpen] = useState(false);
+  const mdUp = useMediaQuery("(min-width: 768px)");
+  const panelRef = useRef(null);
+  const navId = useId();
 
   // Close menu when switching from mobile to desktop view
   useEffect(() => {
@@ -68,10 +65,10 @@ export default function Header({
   );
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/60 bg-white/90 dark:bg-slate-900/60 text-slate-900 dark:text-slate-100 border-b border-slate-200 dark:border-white/10">
+    <header className={HEADER_BAR}>
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Brand section (click to go to About) */}
+          {/* Brand section */}
           <Brand
             first={brandFirst}
             rest={brandRest}
@@ -81,12 +78,10 @@ export default function Header({
             }}
           />
 
-          {/* Desktop navigation - only visible from md breakpoint and above */}
           <DesktopNav pages={pages} active={active} onSelect={onSelect} />
 
-          {/* Right-side actions: theme toggle + mobile toggle */}
+          {/* Right-side actions: only mobile menu now */}
           <div className="flex items-center gap-2">
-            <ThemeToggle dark={dark} onToggle={onToggleTheme} />
             <MobileToggle
               open={open}
               onToggle={() => setOpen((o) => !o)}
@@ -95,7 +90,6 @@ export default function Header({
           </div>
         </div>
 
-        {/* Mobile navigation menu */}
         <MobileNav
           id={`mobile-nav-${navId}`}
           ref={panelRef}

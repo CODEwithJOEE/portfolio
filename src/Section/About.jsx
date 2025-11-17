@@ -1,11 +1,18 @@
 import MetricCard from "../components/MetricCard";
+import {
+  SECTION,
+  SECTION_TITLE,
+  SECTION_SUBTITLE,
+  BTN_PRIMARY,
+  BTN_SECONDARY,
+} from "../styles/uiStyles";
 
 export default function About({ onNavigate }) {
   return (
-    <div className="space-y-6">
+    <div className={SECTION}>
       <header>
-        <h2 className="text-2xl md:text-3xl font-bold">About</h2>
-        <p className="mt-2 text-slate-600 dark:text-slate-300/90 text-base">
+        <h2 className={SECTION_TITLE}>About</h2>
+        <p className={SECTION_SUBTITLE}>
           Turning ideas into high-performance websites and apps that work
           anywhere.
         </p>
@@ -56,13 +63,13 @@ export default function About({ onNavigate }) {
       <div className="flex flex-wrap gap-3 pt-2">
         <button
           onClick={() => onNavigate?.("projects")}
-          className="rounded-xl px-4 py-2 bg-sky-600 text-white hover:bg-sky-500 transition shadow-sm"
+          className={BTN_PRIMARY}
         >
           See My Work
         </button>
         <button
           onClick={() => onNavigate?.("contact")}
-          className="rounded-xl px-4 py-2 border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition shadow-sm"
+          className={BTN_SECONDARY}
         >
           Let’s Collaborate
         </button>
@@ -70,5 +77,3 @@ export default function About({ onNavigate }) {
     </div>
   );
 }
-
-/* keep your MetricCard exactly as you have it */
