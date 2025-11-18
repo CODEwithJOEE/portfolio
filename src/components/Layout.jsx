@@ -11,11 +11,9 @@ export default function Layout({ left, right, footer }) {
         <Card className="min-h-[380px]">{right}</Card>
       </main>
 
-      {footer && (
-        <footer className={LAYOUT_FOOTER}>
-          © {new Date().getFullYear()} {footer}. All rights reserved.
-        </footer>
-      )}
+      <footer className={LAYOUT_FOOTER}>
+        {footer} © {new Date().getFullYear()}. All rights reserved.
+      </footer>
     </div>
   );
 }
