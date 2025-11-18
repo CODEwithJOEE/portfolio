@@ -13,8 +13,7 @@ export default function Layout({ left, right, footer }) {
 
       {footer && (
         <footer className={LAYOUT_FOOTER}>
-          {footer} © {new Date().getFullYear()} Joe Portfolio. All rights
-          reserved.
+          © {new Date().getFullYear()} {footer}. All rights reserved.
         </footer>
       )}
     </div>

@@ -49,9 +49,6 @@ export default function App() {
         pages={PAGES.map(({ id, label }) => ({ id, label }))}
         active={active}
         onSelect={setActive}
-        // ⛔ remove theme props:
-        // dark={dark}
-        // onToggleTheme={toggle}
       />
       <Layout
         left={<Sidebar onSelectContact={() => setActive("contact")} />}
@@ -68,6 +65,7 @@ export default function App() {
             </motion.div>
           </AnimatePresence>
         }
+        footer="Joe Portfolio"
       />
     </div>
   );
