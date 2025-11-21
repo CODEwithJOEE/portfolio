@@ -14,7 +14,6 @@ import {
   HEADER_MOBILE_LINK_ACTIVE,
   HEADER_MOBILE_LINK_INACTIVE,
 } from "../styles/uiStyles";
-import { Home, User, Briefcase, Phone } from "lucide-react";
 
 export default function Header({
   brand = "JOE Portfolio",
