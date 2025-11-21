@@ -24,7 +24,6 @@ export const skillsGroups = [
   {
     title: "Frameworks & Tools",
     skills: [
-      { name: "Laravel", icon: FaLaravel, color: "#FF2D20" },
       {
         name: "WordPress (themes & plugins)",
         icon: FaWordpress,
