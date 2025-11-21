@@ -88,9 +88,9 @@ export default function Header({
             }}
           />
 
-          <DesktopNav pages={pages} active={active} onSelect={onSelect} />
+          <div className="flex items-center gap-6">
+            <DesktopNav pages={pages} active={active} onSelect={onSelect} />
 
-          <div className="flex items-center gap-2">
             <MobileToggle
               open={open}
               onToggle={() => setOpen((o) => !o)}
