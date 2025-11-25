@@ -199,6 +199,8 @@ export const TECH_STYLES = {
   SQLite: "bg-teal-500/15 text-teal-300 border border-teal-400/20",
   WordPress: "bg-sky-500/15 text-sky-300 border border-sky-400/20",
   PHP: "bg-violet-500/15 text-violet-300 border border-violet-400/20",
+  MongoDB: "bg-green-500/15 text-green-300 border border-green-400/20",
+  Vite: "bg-purple-500/15 text-purple-300 border border-purple-400/20",
 };
 
 // ============================================================================

@@ -109,7 +109,7 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ title, status, img, desc, techs, live }) {
+function ProjectCard({ title, status, img, desc, techs, live, button }) {
   return (
     <article className={`${CARD} p-3 flex flex-col`}>
       {/* Image + status */}
@@ -165,7 +165,7 @@ function ProjectCard({ title, status, img, desc, techs, live }) {
             rel="noreferrer"
             className={BTN_PRIMARY}
           >
-            View Live
+            {button || "View Live"}
           </a>
         </div>
       </div>
