@@ -1,23 +1,17 @@
+// src/Section/Projects.jsx
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MetricCard from "../components/MetricCard";
 
 import { projects } from "../data/projects";
 import { STATUS_STYLES, TECH_STYLES } from "../styles/uiStyles";
-
-import {
-  CARD,
-  CHIP,
-  BTN_PRIMARY,
-  BTN_PILL,
-  BTN_PILL_ACTIVE,
-} from "../styles/uiStyles";
+import { CARD, CHIP, BTN_PRIMARY } from "../styles/uiStyles";
+import PaginationNav from "../components/PaginationNav";
 
 export default function Projects() {
   const [page, setPage] = useState(1);
   const pageSize = 2;
 
-  // Stats
   const totals = useMemo(() => {
     const total = projects.length;
     const completed = projects.filter((p) => p.status === "Completed").length;
@@ -31,8 +25,6 @@ export default function Projects() {
   const end = start + pageSize;
 
   const pageItems = useMemo(() => projects.slice(start, end), [start, end]);
-
-  const go = (p) => setPage(Math.min(Math.max(1, p), totalPages));
 
   return (
     <div>
@@ -70,40 +62,13 @@ export default function Projects() {
           <strong>{projects.length}</strong>
         </p>
 
-        <nav className="inline-flex items-center gap-2">
-          <button
-            onClick={() => go(page - 1)}
-            disabled={page === 1}
-            className="px-3 py-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 disabled:opacity-50"
-          >
-            Prev
-          </button>
-
-          <div className="inline-flex items-center gap-1">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-              <button
-                key={n}
-                onClick={() => go(n)}
-                className={`px-3 py-2 rounded-xl border text-sm ${
-                  n === page
-                    ? "bg-sky-600 text-white border-sky-600"
-                    : "bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10"
-                }`}
-                aria-current={n === page ? "page" : undefined}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={() => go(page + 1)}
-            disabled={page === totalPages}
-            className="px-3 py-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 disabled:opacity-50"
-          >
-            Next
-          </button>
-        </nav>
+        <PaginationNav
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+          ariaLabel="Projects pagination"
+          pageActiveClass="bg-sky-600 text-white border-sky-600"
+        />
       </div>
     </div>
   );

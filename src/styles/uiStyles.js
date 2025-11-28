@@ -201,6 +201,7 @@ export const TECH_STYLES = {
   PHP: "bg-violet-500/15 text-violet-300 border border-violet-400/20",
   MongoDB: "bg-green-500/15 text-green-300 border border-green-400/20",
   Vite: "bg-purple-500/15 text-purple-300 border border-purple-400/20",
+  Java: "bg-orange-500/15 text-orange-300 border border-orange-400/20",
 };
 
 // ============================================================================

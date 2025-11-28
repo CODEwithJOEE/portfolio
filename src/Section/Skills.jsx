@@ -1,3 +1,4 @@
+// src/Section/Skills.jsx
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { skillsGroups } from "../data/skillsData.js";
@@ -9,6 +10,7 @@ import {
   BTN_PILL_ACTIVE,
   CARD,
 } from "../styles/uiStyles";
+import PaginationNav from "../components/PaginationNav";
 
 export default function Skills() {
   const pageSize = 4;
@@ -21,8 +23,6 @@ export default function Skills() {
     () => skillsGroups.slice(start, end),
     [start, end]
   );
-
-  const go = (p) => setPage(Math.min(Math.max(1, p), totalPages));
 
   return (
     <div className={SECTION}>
@@ -69,37 +69,17 @@ export default function Skills() {
       </AnimatePresence>
 
       {/* Pagination */}
-      {/* Pagination */}
       <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        {/* text is same */}
-        <nav className="inline-flex items-center gap-2">
-          <button
-            onClick={() => go(page - 1)}
-            disabled={page === 1}
-            className={BTN_PILL}
-          >
-            Prev
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-            <button
-              key={n}
-              onClick={() => go(n)}
-              className={n === page ? BTN_PILL_ACTIVE : BTN_PILL}
-              aria-current={n === page ? "page" : undefined}
-            >
-              {n}
-            </button>
-          ))}
-
-          <button
-            onClick={() => go(page + 1)}
-            disabled={page === totalPages}
-            className={BTN_PILL}
-          >
-            Next
-          </button>
-        </nav>
+        <PaginationNav
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+          ariaLabel="Skills pagination"
+          navClass="inline-flex items-center gap-2"
+          prevNextClass={BTN_PILL}
+          pageClass={BTN_PILL}
+          pageActiveClass={BTN_PILL_ACTIVE} // ← YOU MISSED THIS!!
+        />
       </div>
     </div>
   );

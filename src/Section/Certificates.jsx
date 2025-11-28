@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CERTS } from "../data/certificates";
 import CertCard from "../components/CertCard";
+import PaginationNav from "../components/PaginationNav";
 
 export default function Certificates() {
   const pageSize = 2;
@@ -12,10 +13,7 @@ export default function Certificates() {
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
 
-  // CERTS is a static import; depend only on pagination indices
   const pageItems = useMemo(() => CERTS.slice(start, end), [start, end]);
-
-  const go = (p) => setPage(Math.min(Math.max(1, p), totalPages));
 
   return (
     <div className="space-y-4">
@@ -48,43 +46,12 @@ export default function Certificates() {
           <strong>{CERTS.length}</strong>
         </p>
 
-        <nav
-          className="inline-flex items-center gap-2"
-          aria-label="Certificates pagination"
-        >
-          <button
-            onClick={() => go(page - 1)}
-            disabled={page === 1}
-            className="px-3 py-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 disabled:opacity-50"
-          >
-            Prev
-          </button>
-
-          <div className="inline-flex items-center gap-1">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-              <button
-                key={n}
-                onClick={() => go(n)}
-                className={`px-3 py-2 rounded-xl border text-sm ${
-                  n === page
-                    ? "bg-sky-600 text-white border-sky-600"
-                    : "bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10"
-                }`}
-                aria-current={n === page ? "page" : undefined}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={() => go(page + 1)}
-            disabled={page === totalPages}
-            className="px-3 py-2 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 disabled:opacity-50"
-          >
-            Next
-          </button>
-        </nav>
+        <PaginationNav
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+          ariaLabel="Certificates pagination"
+        />
       </div>
     </div>
   );
