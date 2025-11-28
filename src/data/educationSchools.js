@@ -1,38 +1,27 @@
+import jrmsu from "../assets/logos/jrmsu.png";
+import djaHighSchool from "../assets/logos/dja.png";
+import djaElem from "../assets/logos/dja-elem.png";
+
 export const schools = [
   {
     name: "Jose Rizal Memorial State University – Katipunan Campus",
-    subtitle: "Graduated (2024–2025) — Bachelor of Science in Computer Science",
-    bullets: [
-      "Developed multiple web and mobile projects using PHP, JavaScript, Kotlin, and MySQL.",
-      "Completed On-the-Job Training in IT infrastructure and website management.",
-      "Actively participated in campus technology events and coding competitions.",
-    ],
-  },
-  {
-    name: "Don Jose Aguirre Senior High School",
-    subtitle: "Graduated (2019–2020) — Humanities and Social Sciences",
-    bullets: [
-      "Focused on communication, research, and analytical skills.",
-      "Served as a class officer, organizing academic and extracurricular activities.",
-      "Engaged in school debates and community outreach programs.",
-    ],
+    subtitle: "Graduated (2024–2025) – Bachelor of Science in Computer Science",
+    logo: jrmsu,
+    details:
+      "I graduated from Jose Rizal Memorial State University – Katipunan Campus with a Bachelor of Science in Computer Science during the 2024–2025 academic year.",
   },
   {
     name: "Don Jose Aguirre National High School",
-    subtitle: "Graduated (2018–2019)",
-    bullets: [
-      "Participated in campus organizations and science-related clubs.",
-      "Joined inter-school competitions in academic and technical events.",
-      "Consistently achieved honors in academics.",
-    ],
+    subtitle: "Junior & Senior High School (2013–2020)",
+    logo: djaHighSchool,
+    details:
+      "I completed both my junior and senior high school education at Don Jose Aguirre National High School from 2013 to 2020.",
   },
   {
     name: "Don Jose Aguirre Elementary School",
     subtitle: "Graduated (2013–2014)",
-    bullets: [
-      "Maintained excellent academic performance throughout primary education.",
-      "Actively joined school activities such as sports and arts programs.",
-      "Built foundational skills in communication, teamwork, and leadership.",
-    ],
+    logo: djaElem,
+    details:
+      "I finished my primary education at Don Jose Aguirre Elementary School in the 2013–2014 school year.",
   },
 ];
