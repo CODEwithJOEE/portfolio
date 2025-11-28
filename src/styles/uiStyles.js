@@ -27,7 +27,7 @@ export const BTN_BASE =
 
 // Primary button
 export const BTN_PRIMARY =
-  BTN_BASE + " bg-sky-600 text-white hover:bg-sky-500 shadow-sm";
+  BTN_BASE + " bg-sky-300 text-black hover:bg-sky-400 shadow-sm";
 
 // Secondary (outline) button
 export const BTN_SECONDARY =
